@@ -55,8 +55,8 @@ public class Main {
               }
               // else add item to cart
               cart.add(terms[i]);
+              System.out.printf("Added %s to cart\n", terms[i]);
             }
-            System.out.printf("Added %s to cart\n", terms[i]);
           }
 
           // to add 1 item only
@@ -68,7 +68,7 @@ public class Main {
         case "delete":
           // delete has any number and if number is vaild
           if ((Integer.parseInt(terms[1]) <= 0) || (Integer.parseInt(terms[1]) > cart.size())) {
-            System.out.println("Entered wrong item number");
+            System.out.println("Incorrect item index");
 
           } else {
             Integer i = Integer.parseInt(terms[1]) - 1;

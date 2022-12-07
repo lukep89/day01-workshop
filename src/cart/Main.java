@@ -1,6 +1,7 @@
 package cart;
 
 import java.io.Console;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,25 +35,44 @@ public class Main {
           }
           break;
 
-        case "add": // add apple orange pear
+        case "add":
+          // add apple orange pear
           // check if add has any items
 
-          // if ((terms[1]).length() == 0) {
-          // System.out.println("Nothing was added to list");
-          // } else {
-          cart.add(terms[1]);
-          System.out.printf("Added %s to cart\n", terms[1]);
-          // }
+          // loop to add more then 1 item. e.g. add apple orange pear grape
+          for (Integer i = 0; i < terms.length; i++) {
+
+            // to skip the "add" word
+            if (terms[i].equalsIgnoreCase("add")) {
+              continue;
+
+            } else {
+              if (cart.contains(terms[i])) {
+                // check if item already in cart
+                System.out.printf("%s is already in cart \n", terms[i]);
+                continue;
+
+              }
+              // else add item to cart
+              cart.add(terms[i]);
+            }
+            System.out.printf("Added %s to cart\n", terms[i]);
+          }
+
+          // to add 1 item only
+          // cart.add(terms[1]);
+          // System.out.printf("Added %s to cart\n", terms[1]);
 
           break;
 
         case "delete":
           // delete has any number and if number is vaild
-          if ((Integer.parseInt(terms[1]) < 0) || (Integer.parseInt(terms[1]) > cart.size())) {
+          if ((Integer.parseInt(terms[1]) <= 0) || (Integer.parseInt(terms[1]) > cart.size())) {
             System.out.println("Entered wrong item number");
+
           } else {
             Integer i = Integer.parseInt(terms[1]) - 1;
-            String itemRemoved = cart.remove((int) i);
+            String itemRemoved = cart.remove(i.intValue());
             System.out.printf("%s was removed from cart\n", itemRemoved);
           }
           break;
